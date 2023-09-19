@@ -33,8 +33,16 @@ public class LoginPage {
 		passwordTextBox.sendKeys(passwordText);
 	}
 	
-	public void clickOnLoginButton() {
+	public AccountPage clickOnLoginButton() {
 		loginButton.click();
+		return new AccountPage(driver);
+	}
+	
+	public AccountPage navigateToAccountPage(String emailText, String passwordText) {
+		emailAddressTextBox.sendKeys(emailText);
+		passwordTextBox.sendKeys(passwordText);
+		loginButton.click();
+		return new AccountPage(driver);
 	}
 	
 	public String retrieveTextOfLoginWarningMessage() {
