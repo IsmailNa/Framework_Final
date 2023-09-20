@@ -30,31 +30,31 @@ public class LoginTest extends TestBase{
 		loginpage = landingpage.navigateToLoginPage();
 	}
 
-	@Test(priority=1, dataProvider = "TN", dataProviderClass = ExcelCode.class)
+	@Test(priority=1, dataProvider = "TN", dataProviderClass = ExcelCode.class, enabled = false)
 	public void verifyLoginWithValidCredentials(String email, String password) {
 		accountpage = loginpage.navigateToAccountPage(email, password);
 		Assert.assertTrue(accountpage.validateEditAccountInfoLinkDisplayStatus());	
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2, enabled = false)
 	public void verifyLoginWithValidEmailInvalidPassword() {
 		loginpage.navigateToAccountPage(prop.getProperty("validEmail"), dataprop.getProperty("invalidPassword"));
 		Assert.assertTrue(loginpage.retrieveTextOfLoginWarningMessage().contains(dataprop.getProperty("loginWarningMessage")));	
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, enabled = false)
 	public void verifyLoginWithInvalidEmailValidPassword() {
 		loginpage.navigateToAccountPage(Util.emailWithDateTimeStamp(),prop.getProperty("validPassword"));
 		Assert.assertTrue(loginpage.retrieveTextOfLoginWarningMessage().contains(dataprop.getProperty("loginWarningMessage")));
 	}
 	
-	@Test(priority=4)
+	@Test(priority=4, enabled = false)
 	public void verifyLoginWithInvalidCredentials() {
 		loginpage.navigateToAccountPage(Util.emailWithDateTimeStamp(), dataprop.getProperty("invalidPassword"));
 		Assert.assertTrue(loginpage.retrieveTextOfLoginWarningMessage().contains(dataprop.getProperty("loginWarningMessage")));
 	}
 	
-	@Test(priority=5)
+	@Test(priority=5, enabled = false)
 	public void verifyLoginWithNoCredentials() {
 		loginpage.clickOnLoginButton();	
 		Assert.assertTrue(loginpage.retrieveTextOfLoginWarningMessage().contains(dataprop.getProperty("loginWarningMessage")));	

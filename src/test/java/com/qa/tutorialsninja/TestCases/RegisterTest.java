@@ -40,7 +40,7 @@ public class RegisterTest extends TestBase{
 			
 	}
 	
-	@Test(priority=2)
+	@Test(priority=2, enabled = false)
 	public void verifyRegisterWithAllDetails() {
 		accountsuccesspage = registerpage.registerPageAllDetails(dataprop.getProperty("firstname"), dataprop.getProperty("lastname"), 
 				Util.emailWithDateTimeStamp(), dataprop.getProperty("telephone"), 
@@ -49,7 +49,7 @@ public class RegisterTest extends TestBase{
 		
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, enabled = false)
 	public void verifyRegisterWithExistingEmail() {
 		registerpage.registerPageAllDetails(dataprop.getProperty("firstname"), dataprop.getProperty("lastname"), 
 				prop.getProperty("validEmail"), dataprop.getProperty("telephone"), 

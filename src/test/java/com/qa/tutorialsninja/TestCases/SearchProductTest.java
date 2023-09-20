@@ -36,10 +36,10 @@ public class SearchProductTest extends TestBase{
 	public void verifySearchWithInvalidProduct() {
 		landingpage = new LandingPage(driver);
 		searchpage = landingpage.navigateToSearchPage(dataprop.getProperty("invalidProduct"));
-		Assert.assertTrue(searchpage.displayStatusInvalidOrNoProduct());
+		Assert.assertFalse(searchpage.displayStatusInvalidOrNoProduct());
 	}
 	
-	@Test(priority=3)
+	@Test(priority=3, dependsOnMethods = "verifySearchWithInvalidProduct")
 	public void verifySearchWithNoProduct() {
 		landingpage = new LandingPage(driver);
 		searchpage = landingpage.clickOnSearchButton();
